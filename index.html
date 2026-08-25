@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Controle Financeiro Mensal</title>
+<meta name="theme-color" content="#6f716f">
+<link rel="manifest" href="./manifest.json">
+<link rel="icon" href="./icons/icon-192.png">
+<link rel="apple-touch-icon" href="./icons/icon-192.png">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<div class="app">
+  <header>
+    <div>
+      <h1>Controle Financeiro Mensal</h1>
+      <p>Suas contas e receitas, mês a mês</p>
+    </div>
+    <div class="mes-atual">
+      <select id="seletorMes"></select>
+    </div>
+  </header>
+
+  <div class="resumo">
+    <div class="card receitas">
+      <div class="rotulo">Receitas do mês</div>
+      <div class="valor" id="totalReceitas">R$ 0,00</div>
+    </div>
+    <div class="card despesas">
+      <div class="rotulo">Contas do mês</div>
+      <div class="valor" id="totalDespesas">R$ 0,00</div>
+    </div>
+    <div class="card saldo">
+      <div class="rotulo">Saldo</div>
+      <div class="valor" id="saldoMes">R$ 0,00</div>
+    </div>
+  </div>
+
+  <nav class="tabs">
+    <button id="btnTabContas" class="ativo">Contas</button>
+    <button id="btnTabReceitas">Receitas</button>
+    <button id="btnTabGrafico">Gráfico</button>
+  </nav>
+
+  <section id="painelContas" class="painel ativo">
+    <form class="form-add" id="formConta">
+      <div class="campo">
+        <label>Nome da conta</label>
+        <input type="text" id="contaNome" placeholder="Ex: Água, Luz, Internet" required>
+      </div>
+      <div class="campo">
+        <label>Categoria</label>
+        <select id="contaCategoria">
+          <option>Água</option>
+          <option>Luz</option>
+          <option>Internet</option>
+          <option>Telefone</option>
+          <option>Aluguel</option>
+          <option>Mercado</option>
+          <option>Transporte</option>
+          <option>Outros</option>
+        </select>
+      </div>
+      <div class="campo">
+        <label>Valor (R$)</label>
+        <input type="number" id="contaValor" placeholder="0,00" step="0.01" min="0" required>
+      </div>
+      <button type="submit">Adicionar</button>
+    </form>
+    <div class="lista" id="listaContas"></div>
+  </section>
+
+  <section id="painelReceitas" class="painel">
+    <form class="form-add receita" id="formReceita">
+      <div class="campo">
+        <label>Origem / descrição</label>
+        <input type="text" id="receitaDescricao" placeholder="Ex: Salário, Freelance, Venda" required>
+      </div>
+      <div class="campo">
+        <label>Valor (R$)</label>
+        <input type="number" id="receitaValor" placeholder="0,00" step="0.01" min="0" required>
+      </div>
+      <button type="submit">Adicionar</button>
+    </form>
+    <div class="lista" id="listaReceitas"></div>
+  </section>
+
+  <section id="painelGrafico" class="painel">
+    <div class="grafico-wrap">
+      <div class="grafico-svg-container">
+        <svg id="svgGrafico" viewBox="0 0 220 220" width="220" height="220"></svg>
+        <div class="grafico-centro">
+          <span id="graficoPercentual">0%</span>
+          <span class="grafico-legenda-central">da renda consumida</span>
+        </div>
+      </div>
+      <div class="grafico-legendas" id="graficoLegendas"></div>
+    </div>
+  </section>
+</div>
+
+<script src="./script.js"></script>
+</body>
+</html>

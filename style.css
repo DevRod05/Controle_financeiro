@@ -1,0 +1,329 @@
+:root{
+  --bg-fora: #e4e4e2;      /* cinza mais claro, fundo da página */
+  --bg-central: #6f716f;   /* cinza nardo, div central */
+  --bg-central-2: #797b79; /* variação um pouco mais clara p/ cards internos */
+  --texto-claro: #f5f5f3;
+  --texto-suave: #d3d4d1;
+  --linha-forte: #ffffff22;
+  --ok: #7fae86;
+  --alerta: #c98b6b;
+  --receita: #8fb99a;
+  --despesa: #c98686;
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  min-height:100vh;
+  background:var(--bg-fora);
+  font-family:var(--font);
+  color:var(--texto-claro);
+  display:flex;
+  justify-content:center;
+  padding:32px 16px;
+}
+
+.app{
+  width:100%;
+  max-width:820px;
+  background:var(--bg-central);
+  border-radius:14px;
+  padding:28px 32px 36px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.15);
+}
+
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-bottom:22px;
+  border-bottom:1px solid var(--linha-forte);
+  padding-bottom:18px;
+}
+
+header h1{
+  margin:0;
+  font-size:22px;
+  font-weight:600;
+  letter-spacing:0.2px;
+}
+
+header p{
+  margin:4px 0 0;
+  font-size:13px;
+  color:var(--texto-suave);
+}
+
+.mes-atual{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.mes-atual select{
+  background:var(--bg-central-2);
+  border:1px solid var(--linha-forte);
+  color:var(--texto-claro);
+  padding:8px 10px;
+  border-radius:8px;
+  font-size:14px;
+}
+
+.resumo{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:12px;
+  margin-bottom:24px;
+}
+
+.resumo .card{
+  background:var(--bg-central-2);
+  border-radius:10px;
+  padding:14px 16px;
+}
+
+.resumo .card .rotulo{
+  font-size:12px;
+  color:var(--texto-suave);
+  text-transform:uppercase;
+  letter-spacing:0.4px;
+}
+
+.resumo .card .valor{
+  font-size:20px;
+  font-weight:700;
+  margin-top:4px;
+}
+
+.resumo .card.receitas .valor{ color:var(--receita); }
+.resumo .card.despesas .valor{ color:var(--despesa); }
+.resumo .card.saldo .valor.pos{ color:var(--receita); }
+.resumo .card.saldo .valor.neg{ color:var(--despesa); }
+
+nav.tabs{
+  display:flex;
+  gap:6px;
+  margin-bottom:20px;
+}
+
+nav.tabs button{
+  flex:1;
+  background:transparent;
+  border:1px solid var(--linha-forte);
+  color:var(--texto-suave);
+  padding:10px 12px;
+  border-radius:8px;
+  font-size:14px;
+  cursor:pointer;
+  transition:all .15s ease;
+}
+
+nav.tabs button.ativo{
+  background:var(--bg-central-2);
+  color:var(--texto-claro);
+  border-color:transparent;
+  font-weight:600;
+}
+
+section.painel{ display:none; }
+section.painel.ativo{ display:block; }
+
+form.form-add{
+  background:var(--bg-central-2);
+  border-radius:10px;
+  padding:16px;
+  display:grid;
+  grid-template-columns:1.3fr 1fr 1fr auto;
+  gap:10px;
+  align-items:end;
+  margin-bottom:20px;
+}
+
+form.form-add.receita{
+  grid-template-columns:1.5fr 1fr auto;
+}
+
+.campo{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+
+.campo label{
+  font-size:11px;
+  color:var(--texto-suave);
+  text-transform:uppercase;
+  letter-spacing:0.3px;
+}
+
+.campo input, .campo select{
+  background:var(--bg-central);
+  border:1px solid var(--linha-forte);
+  color:var(--texto-claro);
+  padding:9px 10px;
+  border-radius:7px;
+  font-size:14px;
+}
+
+.campo input::placeholder{ color:var(--texto-suave); }
+
+form.form-add button{
+  background:var(--texto-claro);
+  color:var(--bg-central);
+  border:none;
+  padding:10px 16px;
+  border-radius:7px;
+  font-weight:600;
+  cursor:pointer;
+  font-size:14px;
+  height:fit-content;
+}
+
+form.form-add button:hover{ opacity:0.9; }
+
+.lista{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:var(--bg-central-2);
+  border-radius:9px;
+  padding:12px 14px;
+  gap:10px;
+}
+
+.item .info{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+}
+
+.item .nome{ font-size:14px; font-weight:600; }
+.item .categoria{ font-size:12px; color:var(--texto-suave); }
+
+.item .direita{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.item .valor{ font-size:15px; font-weight:700; }
+.item.despesa .valor{ color:var(--despesa); }
+.item.receita .valor{ color:var(--receita); }
+
+.status-btn{
+  border:none;
+  border-radius:6px;
+  padding:5px 10px;
+  font-size:11px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+.status-btn.pago{ background:var(--ok); color:#1c2a1e; }
+.status-btn.pendente{ background:var(--alerta); color:#2a1c14; }
+
+.excluir{
+  background:none;
+  border:none;
+  color:var(--texto-suave);
+  font-size:16px;
+  cursor:pointer;
+  line-height:1;
+  padding:4px;
+}
+.excluir:hover{ color:var(--despesa); }
+
+.vazio{
+  text-align:center;
+  color:var(--texto-suave);
+  font-size:13px;
+  padding:24px 0;
+}
+
+.grafico-wrap{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:22px;
+  padding:12px 0 8px;
+}
+
+.grafico-svg-container{
+  position:relative;
+  width:220px;
+  height:220px;
+}
+
+.grafico-centro{
+  position:absolute;
+  top:0; left:0; right:0; bottom:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:2px;
+  pointer-events:none;
+}
+
+.grafico-centro #graficoPercentual{
+  font-size:28px;
+  font-weight:700;
+}
+
+.grafico-legenda-central{
+  font-size:11px;
+  color:var(--texto-suave);
+  text-align:center;
+  max-width:110px;
+}
+
+.grafico-legendas{
+  width:100%;
+  max-width:340px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.grafico-legenda-item{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  background:var(--bg-central-2);
+  border-radius:9px;
+  padding:10px 14px;
+  font-size:13px;
+}
+
+.grafico-legenda-item .esq{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.grafico-legenda-item .bolinha{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  display:inline-block;
+}
+
+.grafico-legenda-item .valor{
+  font-weight:700;
+}
+
+@media (max-width:560px){
+  form.form-add, form.form-add.receita{ grid-template-columns:1fr; }
+  .resumo{ grid-template-columns:1fr; }
+  header{ flex-direction:column; align-items:flex-start; }
+}
