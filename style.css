@@ -1,7 +1,7 @@
 :root{
-  --bg-fora: #0000FF;      /* Azul, fundo da página */
-  --bg-central: #FFFFFF;   /* Branco, div central */
-  --bg-central-2: #797b79; /* variação um pouco mais clara p/ cards internos */
+  --bg-fora: #FFFFFF;      /* Branco, fundo da página */
+  --bg-central: #0000FF;   /* Azul, div central */
+  --bg-central-2: #0000C8; /* azul mais escuro p/ cards internos */
   --texto-claro: #f5f5f3;
   --texto-suave: #d3d4d1;
   --linha-forte: #ffffff22;
